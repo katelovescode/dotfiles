@@ -1,10 +1,8 @@
 # KateLovesCode's Dotfiles
 
-## Description
+## TBD: New Instructions
 
-This repository is forked from Dries' Dotfiles, and serves as my way to help me setup and maintain my Mac. It takes the effort out of installing everything manually. Everything which is needed to install my preffered setup of macOS is detailed in this readme. Feel free to explore, learn and copy parts for your own dotfiles. Enjoy! :smile:
-
-Read the blog post: [Getting Started with Dotfiles](https://medium.com/@driesvints/getting-started-with-dotfiles-76bf046d035c)
+I've switched to chezmoi for managing dotfiles and I'm still learning TONS, so I'm going to have to work on new instructions for reconfiguring a new system.  I'll update this README soon, for now it is VERY much in progress
 
 ## A Fresh macOS Setup
 
@@ -17,8 +15,9 @@ First, go through the checklist below to make sure you didn't forget anything be
   - move all documents from non-cloud directories to a cloud storage service?
   - save all work from non-cloud apps to a cloud storage service?
   - export all important data from your local db?
-  - install Google Drive on your local machine, update [mackup](https://github.com/lra/mackup) to the latest version, and run `mackup backup`?
   - remove all your ssh keys from your services?
+  - add all your important config files to this repository using the chezmoi templates to handle any secrets?
+
 
 ### Installing macOS cleanly
 
@@ -39,12 +38,7 @@ If you did all this you may now follow these install instructions to setup a new
 
     > Paste this key from your clipboard into Github's key settings
 
-1. Clone this repo to `~/.dotfiles`
-1. `cd ~/.dotfiles`
-1. Run `./install` to start the installation
-1. Open Google Drive and log in, wait for the Mackup folder to fully sync
-1. Copy `.mackup.cfg` from `/Volumes/GoogleDrive/My Drive/Mackup` to `~/.mackup.cfg`
-1. Restore preferences by running `mackup restore`
+### TODO: Use Chezmoi to set up dotfiles - will need to see if we can script the install part to happen before chezmoi apply
 1. Restart your computer to finalize the installation process
 1. Install Postgres.app - so far no easy way to do this automatically
 
@@ -57,16 +51,3 @@ If you want to start your own dotfiles from this setup, it's pretty easy to do s
 Go through the [`.macos`](./.macos) file and adjust the settings to your liking. You can find more settings at [the original script by Mathias Bynens](https://github.com/mathiasbynens/dotfiles/blob/master/.macos) and [Kevin Suttle's macOS Defaults project](https://github.com/kevinSuttle/MacOS-Defaults).
 
 Check out the [`Brewfile`](./Brewfile) file and adjust the apps you want to install for your machine. Use [their search page](https://caskroom.github.io/search) to check if the app you want to install is available.
-
-To prepare to use dotfiles for the first time you'll need to backup all of your existing settings with Mackup. Install and backup your settings with the command below. By default, your settings will be synced to Dropbox so you can use them to sync between computers and reinstall them when reinstalling your Mac. I use Google Drive for Desktop instead; [check out the documentation](https://github.com/lra/mackup/blob/master/doc/README.md#storage) if you want to use a different backup location than Dropbox.
-
-```bash
-brew install mackup
-mackup backup
-```
-
-Enjoy your own Dotfiles!
-
-## Thanks To
-
-Dries for making a clear blog post and a helpful repo.
