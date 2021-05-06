@@ -1,5 +1,11 @@
 # KateLovesCode's Dotfiles
 
+## TODO
+
+- finish getting the config files from Google Drive into chezmoi repo
+- convert `install`/`executable_install` to scripting per chezmoi instructions
+- templates?
+
 ## TBD: New Instructions
 
 I've switched to chezmoi for managing dotfiles and I'm still learning TONS, so I'm going to have to work on new instructions for reconfiguring a new system.  I'll update this README soon, for now it is VERY much in progress
