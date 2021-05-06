@@ -1,0 +1,135 @@
+export ZSH="/Users/katedonaldson/.oh-my-zsh"
+
+PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+
+ZSH_THEME="spaceship"
+
+plugins=(aphorism docker docker-compose git git-extras gitfast node npm rails vscode)
+
+source $ZSH/oh-my-zsh.sh
+
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
+
+# https://github.com/microsoft/vscode-remote-release/issues/930#issuecomment-511489074
+cd .
+
+alias bi='bundle install'
+alias be='bundle exec'
+
+# Zsh
+alias rezsh='source ~/.zshrc'
+
+# Docker
+alias dbuild='docker-compose up -d --build'
+alias dup='docker-compose up -d'
+alias ddown='docker-compose down'
+alias drm='docker rm $(docker ps -a -q)'
+alias dkill='docker system prune --all'
+
+# Git
+alias gcm='git cln master'
+alias gcd='git cln develop'
+
+# MIRS project folders
+alias mb='cd ~/Projects/MIRS/mirs-backend-yavin'
+alias mf='cd ~/Projects/MIRS/mirs-frontend-xwing'
+alias ma='cd ~/Projects/MIRS/mirs-ami'
+alias ml='cd ~/Projects/MIRS/mirs-local'
+alias mt='cd ~/Projects/MIRS/mirs-terraform'
+
+# Nodenv
+alias ned='curl -fsSL https://github.com/nodenv/nodenv-installer/raw/master/bin/nodenv-doctor | bash'
+
+mirs_login() {
+  cd ~/Projects/MIRS/mirs-cli
+  eval "$(mirs aws login)"
+  cd -
+}
+
+mirs_session() {
+  source <(mirs aws current-session-script)
+}
+
+function pie() {
+  if [ -d "$HOME/Projects/pieforproviders" ]; then
+    cd ~/Projects/pieforproviders
+  elif [ -d "$HOME/Projects/Personal/pieforproviders" ]; then
+    cd ~/Projects/Personal/pieforproviders
+  else
+    echo "There is no directory for pie"
+  fi
+}
+
+function dclean() {
+  volumes=`docker volume ls -q -f dangling=true`
+  images=`docker images -f "dangling=true" -q`
+  if [[ $volumes ]]; then
+    docker volume rm $volumes
+  fi
+  if [[ $images ]]; then
+    docker rmi $images
+  fi
+}
+
+function dattach() {
+  docker attach --detach-keys="ctrl-a" $(docker ps --format "{{.Names}} {{.ID}}" | grep "$1" | cut -d' ' -f2)
+}
+
+# unsets the nomatch error so we can run rake tasks like normal
+unsetopt nomatch
+
+# usage:
+# whatisusing 3000
+function whatisusing() {
+  lsof -i tcp:$1 
+}
+
+# usage:
+# dcop api
+function dcop() {
+  docker-compose exec $1 bundle exec rubocop 
+}
+
+# usage:
+# dcopa api
+function dcopa() {
+  docker-compose exec $1 bundle exec rubocop -a
+}
+
+# usage:
+# dspec api
+function dspec() {
+  docker-compose exec $1 bundle exec rspec
+}
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/katedonaldson/.sdkman"
+[[ -s "/Users/katedonaldson/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/katedonaldson/.sdkman/bin/sdkman-init.sh"
+
+PATH="$HOME/Library/Python/3.7/bin:$PATH"
+PATH="$HOME/Library/Python/3.9/bin:$PATH"
+PATH="$HOME/Projects/MIRS/mirs-cli/bin:$PATH"
+PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+PATH="$PATH:$HOME/.rvm/bin"
+PATH=/opt/homebrew/bin:$PATH
+
+export PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# for libpq to install the pg gem in ruby/rails apps
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+if command -v nodenv 1>/dev/null 2>&1; then
+  eval "$(nodenv init -)"
+fi
