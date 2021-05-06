@@ -295,6 +295,10 @@ defaults write com.apple.terminal StringEncodings -array 4
 #defaults write com.apple.terminal FocusFollowsMouse -bool true
 #defaults write org.x.X11 wm_ffm -bool true
 
+defaults write com.googlecode.iterm2 "Normal Font" -string "FiraMonoForPowerline-Regular 12"
+defaults write com.googlecode.iterm2 "Non Ascii Font" -string "FiraMonoForPowerline-Regular 12"
+
+
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################

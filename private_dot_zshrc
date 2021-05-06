@@ -1,5 +1,8 @@
 export ZSH="/Users/katedonaldson/.oh-my-zsh"
 
+# sets the editor for chezmoi to Visual Studio Code
+export EDITOR="code"
+
 PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 
 ZSH_THEME="spaceship"

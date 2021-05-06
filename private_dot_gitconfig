@@ -1,0 +1,68 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Kate Donaldson
+	email = kate@katelovescode.com
+
+[alias]
+  la = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\" --all
+	ac = !git add -A && git commit
+  latest = "!bash -c 'git for-each-ref --format=\"%(*committerdate:raw)%(committerdate:raw) %(refname) %(*objectname) %(objectname)\" refs/tags | sort -n | awk \"{ print \\$4, \\$3 }\" | tail -n 1'"
+  co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
+  deploy = "!f() { \
+        if [[ ! -z $1 && ! -z $2 ]]; then \
+          git checkout $1; \
+          git push; \
+          git checkout $2; \
+          git merge $1; \
+          git push; \
+          git checkout $1; \
+        else \
+          echo '\n\nUsage: git deploy [development branch] [main branch]\n\n'; \
+        fi; \
+       }; f"
+  cln = "!f() { \
+        if [ ! -z $1 ]; then \
+          git remote prune origin && \
+          if git show-ref refs/heads/$1; then \
+            echo 'checking out' $1 && git checkout $1; \
+            git fetch --all && \
+            git pull && \
+            git branch --merged | grep -vE 'dev$| main$| master$| staging$| testing$ |develop$' | xargs -n 1 git branch -d; \
+            git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D; \
+          else \
+            echo '\n\nBranch does not exist:' $1 '\n\n'; \
+          fi; \
+        else \
+          echo '\n\nUsage: git cln <branch>\n\n'; \
+        fi; \
+       }; f"
+  tidy = "!f() { \
+    if [[ ! -z $1 && $1 != '--dry-run' && $1 != '-d' ]]; then \
+      if [[ $2 == '--dry-run' || $2 == '-d' ]]; then \
+        git checkout $1 && git remote prune origin && git branch --merged | grep -vE '^[ \\*]*(dev|main|master|staging|testing|develop)$' | awk '{print $1}'; \
+      else \
+        git checkout $1 && git remote prune origin && git branch --merged | grep -vE '^[ \\*]*(dev|main|master|staging|testing|develop)$' | awk '{print $1}' | xargs git branch -D; \
+      fi \
+    else \
+      echo '\n\nUsage: git tidy <branch> [--dry-run|-d]\n\n'; \
+    fi; \
+    }; f"
+
+  rbi = !sh -c \"git rebase -i `git merge-base $1 HEAD`\" -
+
+
+  pub = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+  s = !git status
+  co = checkout
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+
+[core]
+	editor = vim
+	excludesfile = /Users/katedonaldson/.gitignore_global
+[init]
+	templatedir = ~/.git-templates
+
+[includeIf "gitdir:~/Projects/MIRS/"]
+  path = "~/Projects/MIRS/.gitconfig"
+[pull]
+	rebase = false
