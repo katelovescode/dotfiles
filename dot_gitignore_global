@@ -43,3 +43,5 @@ Thumbs.db
 .idea/
 .vscode
 .vagrant/
+
+**/_katenotes.md
