@@ -117,9 +117,9 @@ PATH="$HOME/Library/Python/3.7/bin:$PATH"
 PATH="$HOME/Library/Python/3.9/bin:$PATH"
 PATH="$HOME/Projects/MIRS/mirs-cli/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
+PATH="/opt/homebrew/bin:$PATH" # Add brew to path for M1 Chip
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 PATH="$PATH:$HOME/.rvm/bin"
-PATH=/opt/homebrew/bin:$PATH
 
 export PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 

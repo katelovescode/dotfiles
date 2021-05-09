@@ -33,9 +33,6 @@ else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Add brew to PATH for M1 chip
-echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.zshrc
-
 # Update Homebrew recipes
 brew update
 
