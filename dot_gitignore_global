@@ -45,3 +45,7 @@ Thumbs.db
 .vagrant/
 
 **/_katenotes.md
+
+# Solargraph Config  #
+######################
+**/.solargraph.yml
