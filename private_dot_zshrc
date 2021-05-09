@@ -130,10 +130,12 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+else
+  echo "pyenv not installed"
 fi
 
 if command -v nodenv 1>/dev/null 2>&1; then
   eval "$(nodenv init -)"
 else
-  echo "Nodenv not installed"
+  echo "nodenv not installed"
 fi
