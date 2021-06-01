@@ -35,23 +35,6 @@ alias dkill='docker system prune --all'
 alias gcm='git cln master'
 alias gcd='git cln develop'
 
-# MIRS project folders
-alias mb='cd ~/Projects/MIRS/mirs-backend-yavin'
-alias mf='cd ~/Projects/MIRS/mirs-frontend-xwing'
-alias ma='cd ~/Projects/MIRS/mirs-ami'
-alias ml='cd ~/Projects/MIRS/mirs-local'
-alias mt='cd ~/Projects/MIRS/mirs-terraform'
-
-mirs_login() {
-  cd ~/Projects/MIRS/mirs-cli
-  eval "$(mirs aws login)"
-  cd -
-}
-
-mirs_session() {
-  source <(mirs aws current-session-script)
-}
-
 function pie() {
   if [ -d "$HOME/Projects/pieforproviders" ]; then
     cd ~/Projects/pieforproviders
@@ -112,7 +95,6 @@ export SDKMAN_DIR="/Users/katedonaldson/.sdkman"
 
 PATH="$HOME/Library/Python/3.7/bin:$PATH"
 PATH="$HOME/Library/Python/3.9/bin:$PATH"
-PATH="$HOME/Projects/MIRS/mirs-cli/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="/opt/homebrew/bin:$PATH" # Add brew to path for M1 Chip
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
