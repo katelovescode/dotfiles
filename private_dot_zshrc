@@ -91,7 +91,14 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export SDKMAN_DIR="/Users/katedonaldson/.sdkman"
 [[ -s "/Users/katedonaldson/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/katedonaldson/.sdkman/bin/sdkman-init.sh"
 
+# for earlier versions on M1 Macs
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
+# Must run prefixed rbenvs for earlier rubies
+# RUBY_CFLAGS="-Wno-error=implicit-function-declaration" rbenv install 2.6.6
+
+# for earlier versions on M1 Macs
+PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 PATH="$HOME/.pyenv/bin:$PATH"
 PATH="$HOME/.nodenv/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
