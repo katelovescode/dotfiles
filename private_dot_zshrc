@@ -3,8 +3,6 @@ export ZSH="/Users/katedonaldson/.oh-my-zsh"
 # sets the editor for chezmoi to Visual Studio Code
 export EDITOR="code"
 
-PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-
 ZSH_THEME="spaceship"
 
 plugins=(aphorism docker docker-compose git git-extras gitfast node npm rails vscode)
@@ -96,6 +94,7 @@ export SDKMAN_DIR="/Users/katedonaldson/.sdkman"
 
 PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
+PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="/opt/homebrew/bin:$PATH" # Add brew to path for M1 Chip
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
