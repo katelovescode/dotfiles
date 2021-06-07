@@ -4,7 +4,7 @@
 echo "\nGreetings, Sarge\n\n"
 
 if which ruby >/dev/null 2>&1; then
-  if ![ `gem list '^aphorism$' -i` = true ] && ![ `gem list '^lolcat$' -i` = true ]; then
+  if ! [ `gem list '^aphorism$' -i` = true ] && ! [ `gem list '^lolcat$' -i` = true ]; then
     echo "initializing aphorism with lolcat"
     gem install --user-install bundler aphorism lolcat --silent
   fi
