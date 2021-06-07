@@ -1,6 +1,6 @@
- #!/bin/zsh
+#!/bin/zsh
 
-sudo echo "Setting up your Mac..."
+echo "Setting up your Mac..."
 
 # Install aphorism
 if which aphorism >/dev/null 2>&1; then
@@ -73,10 +73,10 @@ brew services start postgresql > /dev/null 2>&1
 
 # Set macOS preferences
 cd $HOME
-source $HOME/.dotfiles/.macos
+source $HOME/.macos
 
 # may fix missing icons?
-sudo rm -rfv /Library/Preferences/com.apple.dock.plist
+# sudo rm -rfv /Library/Preferences/com.apple.dock.plist
 
 # needed for Docker and other Intel apps on M1 chip
 softwareupdate --install-rosetta --agree-to-license
