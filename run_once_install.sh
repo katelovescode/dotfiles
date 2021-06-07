@@ -68,15 +68,19 @@ else
   echo "~/.config already exists"
 fi
 
+# plugin for default gems with RBENV - for aphorism and lolcat
+if which rbenv >/dev/null 2>&1; then
+  git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
+else
+  echo "rbenv is not installed"
+fi
+
 pg_ctl -D /usr/local/var/postgres start > /dev/null 2>&1
 brew services start postgresql > /dev/null 2>&1
 
 # Set macOS preferences
 cd $HOME
 source $HOME/.macos
-
-# may fix missing icons?
-# sudo rm -rfv /Library/Preferences/com.apple.dock.plist
 
 # needed for Docker and other Intel apps on M1 chip
 softwareupdate --install-rosetta --agree-to-license
