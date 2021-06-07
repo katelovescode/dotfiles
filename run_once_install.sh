@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+ #!/usr/bin/env zsh
 
 sudo echo "Setting up your Mac..."
 
@@ -32,6 +32,9 @@ if which brew >/dev/null 2>&1; then
 else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
+# Add brew to PATH for M1 chip
+echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.zshrc
 
 # Update Homebrew recipes
 brew update
