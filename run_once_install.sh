@@ -1,4 +1,4 @@
- #!/usr/bin/env zsh
+ #!/bin/zsh
 
 sudo echo "Setting up your Mac..."
 
@@ -46,13 +46,6 @@ brew bundle
 # Configure Chrome to start where you left off on startup
 cd $HOME/Library/Application\ Support/Google/Chrome/Default
 jq -ec '.session.restore_on_startup = 1' Secure\ Preferences > Prefs.tmp && mv Prefs.tmp Secure\ Preferences
-
-# Install rvm
-if which rvm >/dev/null 2>&1; then
-  echo "rvm already installed"
-else
-  curl -sSL https://get.rvm.io | bash -s stable --with-gems="aphorism lolcat"
-fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" > /dev/null 2>&1
 
