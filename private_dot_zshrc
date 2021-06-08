@@ -7,8 +7,6 @@ ZSH_THEME="spaceship"
 
 plugins=(aphorism docker docker-compose git git-extras gitfast node npm rails vscode)
 
-source $ZSH/oh-my-zsh.sh
-
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
@@ -91,13 +89,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export SDKMAN_DIR="/Users/katedonaldson/.sdkman"
 [[ -s "/Users/katedonaldson/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/katedonaldson/.sdkman/bin/sdkman-init.sh"
 
-# for earlier versions on M1 Macs
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Must run prefixed rbenvs for earlier rubies
 # RUBY_CFLAGS="-Wno-error=implicit-function-declaration" rbenv install 2.6.6
 
-# for earlier versions on M1 Macs
+# for earlier versions og Ruby on M1 Macs
 PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 PATH="$HOME/.pyenv/bin:$PATH"
 PATH="$HOME/.nodenv/bin:$PATH"
@@ -108,6 +104,9 @@ PATH="/opt/homebrew/bin:$PATH" # Add brew to path for M1 Chip
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 export PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
+
+# for earlier versions of Ruby on M1 Macs
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # for libpq to install the pg gem in ruby/rails apps
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
@@ -133,3 +132,5 @@ if command -v nodenv 1>/dev/null 2>&1; then
 else
   echo "nodenv not installed"
 fi
+
+source $ZSH/oh-my-zsh.sh
