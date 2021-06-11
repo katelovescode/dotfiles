@@ -1,4 +1,4 @@
-export ZSH="/Users/katedonaldson/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # sets the editor for chezmoi to Visual Studio Code
 export EDITOR="code"
@@ -86,8 +86,8 @@ function dspec() {
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/katedonaldson/.sdkman"
-[[ -s "/Users/katedonaldson/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/katedonaldson/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
 # Must run prefixed rbenvs for earlier rubies

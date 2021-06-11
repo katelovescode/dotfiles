@@ -61,8 +61,5 @@
 	excludesfile = /Users/katedonaldson/.gitignore_global
 [init]
 	templatedir = ~/.git-templates
-
-[includeIf "gitdir:~/Projects/MIRS/"]
-  path = "~/Projects/MIRS/.gitconfig"
 [pull]
 	rebase = false

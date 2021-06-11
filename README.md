@@ -8,7 +8,7 @@
 
 ## TBD: New Instructions
 
-I've switched to chezmoi for managing dotfiles and I'm still learning TONS, so I'm going to have to work on new instructions for reconfiguring a new system.  I'll update this README soon, for now it is VERY much in progress
+I've switched to chezmoi for managing dotfiles and I'm still learning TONS, so I'm going to have to work on new instructions for reconfiguring a new system.  I'll update this README soon, for now it is VERY much in progress.
 
 ## A Fresh macOS Setup
 
@@ -45,8 +45,22 @@ If you did all this you may now follow these install instructions to setup a new
     > Paste this key from your clipboard into Github's key settings
 
 ### TODO: Use Chezmoi to set up dotfiles - will need to see if we can script the install part to happen before chezmoi apply
-1. Restart your computer to finalize the installation process
-1. Install Postgres.app - so far no easy way to do this automatically
+
+1. Fork this repo into your own account
+2. `brew install chezmoi`
+3. `chezmoi init https://github.com/username/dotfiles.git` <- point to your repo
+4. `chezmoi edit` the following tmpl and config files:
+
+  > `share/chezmoi/dot_ssh/authorized_keys.tmpl`
+  > change this to point to your github username
+  >
+  > `share/chezmoi/private_dot_gitconfig`
+  > change this to your git user & email
+
+  ### TODO: Remove a lot of tmpl files because of lastpass/one pass?
+
+5. `chezmoi apply <github username>` 
+6. Install Postgres.app - so far no easy way to do this automatically
 
 Your Mac is now ready to use!
 

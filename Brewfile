@@ -38,7 +38,6 @@ brew "zsh-completions"
 brew "heroku/brew/heroku"
 
 # Casks
-cask "1password-cli"
 cask "docker"
 cask "google-chrome"
 cask "google-drive"
