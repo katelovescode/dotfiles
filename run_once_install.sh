@@ -16,6 +16,13 @@ else
   gem install --user-install lolcat
 fi
 
+# Install solargraph
+if which solargraph >/dev/null 2>&1; then
+  echo "solargraph already installed"
+else
+  gem install --user-install solargraph
+fi
+
 # Fonts for zsh theme
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
@@ -74,4 +81,4 @@ source $HOME/.macos
 softwareupdate --install-rosetta --agree-to-license
 
 # restart
-sudo shutdown -r now
+osascript -e 'tell app "System Events" to restart'
