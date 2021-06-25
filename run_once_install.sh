@@ -46,8 +46,6 @@ jq -ec '.session.restore_on_startup = 1' Secure\ Preferences > Prefs.tmp && mv P
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" > /dev/null 2>&1
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | zsh
-
 # Create a Projects directory
 if [ ! -d "$HOME/Projects" ]; then
   mkdir $HOME/Projects
@@ -63,13 +61,6 @@ if [ ! -d "$HOME/.config" ]; then
   mkdir $HOME/.config
 else
   echo "~/.config already exists"
-fi
-
-# plugin for default gems with RBENV - for aphorism and lolcat
-if which rbenv >/dev/null 2>&1; then
-  git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
-else
-  echo "rbenv is not installed"
 fi
 
 pg_ctl -D /usr/local/var/postgres start > /dev/null 2>&1
