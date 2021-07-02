@@ -20,17 +20,6 @@ alias be='bundle exec'
 alias tf='terraform'
 alias tfs='terraform state'
 
-function rotate_pie_keys() {
-  for key in \   
-    aws_iam_access_key.applications[\"demo\"] \
-    aws_iam_access_key.applications[\"local\"] \
-    aws_iam_access_key.applications[\"production\"] \
-    aws_iam_access_key.applications[\"staging\"] \
-    aws_iam_access_key.humans[\"chelsea\"] \
-    aws_iam_access_key.humans[\"kate\"]; do terraform taint $key
-  done
-}
-
 # Zsh
 alias rezsh='source ~/.zshrc'
 
