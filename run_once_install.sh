@@ -91,8 +91,7 @@ else
 fi
 
 # restart
-read shutdownpref "Do you want to restart now?  Anything but 'y' will prevent restarting."
-if [ shutdownpref == 'y' ] || [ shutdownpref == "Y" ]; then
+if read -q "shutdownpref?Do you want to restart now?  Anything but 'y' will prevent restarting."; then
   sudo shutdown -r now
 else
   "skipping restart, if you see weird behavior you might need to restart manually"
