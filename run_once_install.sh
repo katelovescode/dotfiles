@@ -61,7 +61,11 @@ else
 fi
 
 # Add Projects to Favorites
-mysides add Projects file:///Users/$(id -un)/Projects
+if mysides list | grep "Projects" >/dev/null 2>&1; then
+  mysides add Projects file:///Users/$(id -un)/Projects
+else
+  echo "~/Projects folder already in sidebar"
+fi
 
 # make a ~/.config file
 if [ ! -d "$HOME/.config" ]; then
@@ -78,7 +82,18 @@ cd $HOME
 source $HOME/.macos
 
 # needed for Docker and other Intel apps on M1 chip
-softwareupdate --install-rosetta --agree-to-license
+if [[ $(uname -p) == 'arm' ]]; then
+  echo "Running on M1 chip"
+  softwareupdate -lia --install-rosetta --agree-to-license
+else
+  echo "Running on Darwin chip"
+  softwareupdate -lia
+fi
 
 # restart
-osascript -e 'tell app "System Events" to restart'
+read -p "Do you want to restart now?  Anything but 'y' will prevent restarting." shutdownpref
+if [ shutdownpref == 'y' ] || [ shutdownpref == "Y" ]; then
+  sudo shutdown -r now
+else
+  "skipping restart, if you see weird behavior you might need to restart manually"
+fi
