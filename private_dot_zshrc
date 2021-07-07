@@ -20,6 +20,8 @@ alias be='bundle exec'
 alias tf='terraform'
 alias tfs='terraform state'
 
+alias notify='tput bel'
+
 # Zsh
 alias rezsh='source ~/.zshrc'
 
