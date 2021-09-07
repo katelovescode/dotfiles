@@ -17,9 +17,9 @@ cd .
 alias bi='bundle install'
 alias be='bundle exec'
 
-alias rbn='bundle exec rubocop'
-alias rbf='bundle exec rubocop -a'
-alias rsp='bundle exec rspec'
+alias rbn='be rubocop'
+alias rbf='be rubocop -a'
+alias rsp='be rspec'
 
 alias tf='terraform'
 alias tfs='terraform state'
