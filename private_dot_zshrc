@@ -19,7 +19,6 @@ alias be='bundle exec'
 
 alias rbn='be rubocop'
 alias rbf='be rubocop -a'
-alias rsp='be rspec'
 
 alias tf='terraform'
 alias tfs='terraform state'
