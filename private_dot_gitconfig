@@ -61,5 +61,6 @@
 	excludesfile = /Users/katedonaldson/.gitignore_global
 [init]
 	templatedir = ~/.git-templates
+  defaultBranch = main
 [pull]
 	rebase = false
