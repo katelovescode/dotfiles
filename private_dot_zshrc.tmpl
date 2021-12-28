@@ -14,6 +14,8 @@ setopt EXTENDED_HISTORY
 # https://github.com/microsoft/vscode-remote-release/issues/930#issuecomment-511489074
 cd .
 
+GITHUB_TOKEN={{ (index (lastpassRaw "5958865817726292127") 0).note }}
+
 alias bi='bundle install'
 alias be='bundle exec'
 
@@ -58,10 +60,6 @@ function dclean() {
   if [[ $images ]]; then
     docker rmi $images
   fi
-}
-
-function dattach() {
-  docker attach --detach-keys="ctrl-a" $(docker ps --format "{{.Names}} {{.ID}}" | grep "$1" | cut -d' ' -f2)
 }
 
 # unsets the nomatch error so we can run rake tasks like normal
