@@ -9,12 +9,12 @@ plugins=(aphorism docker docker-compose git git-extras gitfast node npm rails vs
 
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
+export GITHUB_TOKEN={{ (index (lastpassRaw "5958865817726292127") 0).note }}
 setopt EXTENDED_HISTORY
 
 # https://github.com/microsoft/vscode-remote-release/issues/930#issuecomment-511489074
 cd .
 
-GITHUB_TOKEN={{ (index (lastpassRaw "5958865817726292127") 0).note }}
 
 alias bi='bundle install'
 alias be='bundle exec'
