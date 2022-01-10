@@ -49,3 +49,11 @@ Thumbs.db
 # Solargraph Config  #
 ######################
 **/.solargraph.yml
+
+# rbenv / rvm #
+###############
+.ruby-gemset
+
+# nodenv #
+##########
+.node-version
