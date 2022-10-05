@@ -10,9 +10,9 @@ export SAVEHIST=$HISTSIZE
 export GITHUB_TOKEN={{ (index (lastpassRaw "5958865817726292127") 0).note }}
 setopt EXTENDED_HISTORY
 
-# https://github.com/microsoft/vscode-remote-release/issues/930#issuecomment-511489074
-cd .
-
+##################
+# Aliases        #
+##################
 
 alias bi='bundle install'
 alias be='bundle exec'
@@ -83,19 +83,19 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+##################
+# PATH additions #
+##################
 
-# Must run prefixed rbenvs for earlier rubies
-# RUBY_CFLAGS="-Wno-error=implicit-function-declaration" rbenv install 2.6.6
-
-# for earlier versions og Ruby on M1 Macs
+# for earlier versions of Ruby on M1 Macs
 PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 PATH="$HOME/.pyenv/bin:$PATH"
 PATH="$HOME/.nodenv/bin:$PATH"
-PATH="$HOME/.rbenv/bin:$PATH"
 PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="/opt/homebrew/bin:$PATH" # Add brew to path for M1 Chip
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
 
 export PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 
