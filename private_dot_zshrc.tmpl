@@ -41,25 +41,9 @@ alias dkill='docker system prune --all'
 alias gcm='git cln master'
 alias gcd='git cln develop'
 
-function pie() {
-  if [ -d "$HOME/Projects/pieforproviders" ]; then
-    cd ~/Projects/pieforproviders
-  elif [ -d "$HOME/Projects/Personal/pieforproviders" ]; then
-    cd ~/Projects/Personal/pieforproviders
-  else
-    echo "There is no directory for pie"
-  fi
-}
-
 function dclean() {
-  volumes=`docker volume ls -q -f dangling=true`
-  images=`docker images -f "dangling=true" -q`
-  if [[ $volumes ]]; then
-    docker volume rm $volumes
-  fi
-  if [[ $images ]]; then
-    docker rmi $images
-  fi
+  docker volume rm $(docker volume ls -q -f dangling=true)
+  docker rmi $(docker images -q -f dangling=true)
 }
 
 # unsets the nomatch error so we can run rake tasks like normal

@@ -57,3 +57,7 @@ Thumbs.db
 # nodenv #
 ##########
 .node-version
+
+# JS Development #
+##################
+node_modules
