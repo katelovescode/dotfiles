@@ -42,8 +42,14 @@ alias gcm='git cln master'
 alias gcd='git cln develop'
 
 function dclean() {
-  docker volume rm $(docker volume ls -q -f dangling=true)
-  docker rmi $(docker images -q -f dangling=true)
+  volumes=$(docker volume ls -q -f dangling=true)
+  images=$(docker images -q -f dangling=true)
+  if [[ $volumes ]] {
+    docker volume rm $volumes
+  }
+  if [[ $images ]] {
+    docker rmi $images
+  }
 }
 
 # unsets the nomatch error so we can run rake tasks like normal
