@@ -1,11 +1,9 @@
+plugins=(aphorism docker docker-compose git git-extras gitfast node npm rails vscode)
+
 export ZSH="$HOME/.oh-my-zsh"
 
 # sets the editor for chezmoi to Visual Studio Code
 export EDITOR="code --wait"
-
-source $(brew --prefix)/opt/spaceship/spaceship.zsh
-
-plugins=(aphorism docker docker-compose git git-extras gitfast node npm rails vscode)
 
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
@@ -123,3 +121,4 @@ else
 fi
 
 source $ZSH/oh-my-zsh.sh
+source $(brew --prefix)/opt/spaceship/spaceship.zsh
