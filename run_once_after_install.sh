@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+echo "Setting Preferences"
+
 # Set macOS preferences
 cd $HOME
 source $HOME/.macos
