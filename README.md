@@ -56,11 +56,22 @@ After going through the checklist above and making sure you backed everything up
 
     1. 
         ```zsh
-        op item get "Your Entry Title"
+        ➜ op item get "My Item Name"
+        ID:          [Item ID]
+        Title:       My Item Name
+        Vault:       [Vault Name] ([Vault ID])
+        Created:     [Date]
+        Updated:     [Date] by [User]
+        Favorite:    [false/true]
+        Tags:        [Tag Names]
+        Version:     1
+        Category:    SECURE_NOTE
+        Fields:
+          notesPlain:    [token_saved_here]
         ```
-        This should show you the field array, and the integer in the template is the index of the item you want in that array.  In the example below, "Github Token" is my entry title, and `0` is the index of the field that holds my token in the field array.
+        This should show you the field array, and the integer in the template is the index of the item you want in that array.  In the example above, "My Item Name" is my entry title, and `0` is the index of the field (notesPlain) that holds my token in the field array.
         ```zsh
-        {{ (index (onepassword "Github Token").fields 0).value }}
+        {{ (index (onepassword "My Item Name").fields 0).value }}
         ```
     1. Change the templates in the following files to your 1Password entry name and field index for your **Github token**
         * `~/.local/share/chezmoi/private_dot_zshrc.tmpl`
