@@ -83,7 +83,7 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "America/Chicago" > /dev/null
+sudo systemsetup -settimezone "America/Chicago" > /dev/null 2>&1
 
 ###############################################################################
 # Energy saving                                                               #
@@ -96,7 +96,7 @@ sudo pmset -a lidwake 1
 sudo pmset -a autorestart 1
 
 # Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+sudo systemsetup -setrestartfreeze on > /dev/null 2>&1
 
 # Sleep the display after 15 minutes
 sudo pmset -a displaysleep 15
@@ -111,7 +111,7 @@ sudo pmset -b sleep 5
 sudo pmset -a standbydelay 86400
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+sudo systemsetup -setcomputersleep Off > /dev/null 2>&1
 
 # Hibernation mode
 # 0: Disable hibernation (speeds up entering sleep mode)
