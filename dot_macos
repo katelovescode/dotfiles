@@ -83,41 +83,41 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "America/Chicago" > /dev/null
+sudo systemsetup -settimezone "America/Chicago" 2>&1 /dev/null
 
 ###############################################################################
 # Energy saving                                                               #
 ###############################################################################
 
-# # Enable lid wakeup
-# sudo pmset -a lidwake 1
+# Enable lid wakeup
+sudo pmset -a lidwake 1
 
-# # Restart automatically on power loss
-# sudo pmset -a autorestart 1
+# Restart automatically on power loss
+sudo pmset -a autorestart 1
 
-# # Restart automatically if the computer freezes
-# sudo systemsetup -setrestartfreeze on > /dev/null
+# Restart automatically if the computer freezes
+sudo systemsetup -setrestartfreeze on 2>&1 /dev/null
 
-# # Sleep the display after 15 minutes
-# sudo pmset -a displaysleep 15
+# Sleep the display after 15 minutes
+sudo pmset -a displaysleep 15
 
-# # Disable machine sleep while charging
-# sudo pmset -c sleep 0
+# Disable machine sleep while charging
+sudo pmset -c sleep 0
 
-# # Set machine sleep to 5 minutes on battery
-# sudo pmset -b sleep 5
+# Set machine sleep to 5 minutes on battery
+sudo pmset -b sleep 5
 
-# # Set standby delay to 24 hours (default is 1 hour)
-# sudo pmset -a standbydelay 86400
+# Set standby delay to 24 hours (default is 1 hour)
+sudo pmset -a standbydelay 86400
 
-# # Never go into computer sleep mode
-# sudo systemsetup -setcomputersleep Off > /dev/null
+# Never go into computer sleep mode
+sudo systemsetup -setcomputersleep Off 2>&1 /dev/null
 
-# # Hibernation mode
-# # 0: Disable hibernation (speeds up entering sleep mode)
-# # 3: Copy RAM to disk so the system state can still be restored in case of a
-# #    power failure.
-# sudo pmset -a hibernatemode 0
+# Hibernation mode
+# 0: Disable hibernation (speeds up entering sleep mode)
+# 3: Copy RAM to disk so the system state can still be restored in case of a
+#    power failure.
+sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
 sudo rm /private/var/vm/sleepimage
@@ -430,11 +430,11 @@ defaults write com.apple.spotlight orderedItems -array \
 	'{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
 	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 # Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
+killall mds 2>&1 /dev/null
 # Make sure indexing is enabled for the main volume
-sudo mdutil -i on / > /dev/null
+sudo mdutil -i on / 2>&1 /dev/null
 # Rebuild the index from scratch
-sudo mdutil -E / > /dev/null
+sudo mdutil -E / 2>&1 /dev/null
 
 ###############################################################################
 # Terminal & iTerm 2                                                          #
