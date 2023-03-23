@@ -1,4 +1,5 @@
 github.com:
 - user: katelovescode
   oauth_token: {{ (index (onepassword "Github Token").fields 0).value }}
-  protocol: https
+  protocol: ssh
+
