@@ -93,12 +93,10 @@ else
 fi
 
 # restart
-read -p $'\n\nDo you want to restart now?  Anything but \'y\' will prevent restarting. ' -n 1 -r
-echo    
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-  echo "\n\nshutting down"
+echo "\n\nDo you want to restart now?  Anything but 'y' will prevent restarting."
+if read -q "shutdownpref?"; then
+  echo "\n\nShutting down now.\n"
   sudo shutdown -r now
 else
-  echo "\n\nskipping restart, if you see weird behavior you might need to restart manually"
+  echo "\n\nSkipping restart, if you see weird behavior you might need to restart manually.\n"
 fi
