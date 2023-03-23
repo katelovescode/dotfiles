@@ -1,4 +1,4 @@
 github.com:
 - user: katelovescode
-  oauth_token: {{ (index (lastpass "4931030106371125268") 0).note.token | trim }}
+  oauth_token: {{ (index (onepassword "Github Token").fields 0).value }}
   protocol: https

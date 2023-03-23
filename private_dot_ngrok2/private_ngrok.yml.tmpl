@@ -1,1 +1,1 @@
-authtoken: {{ (index (lastpass "4597153460235446023") 0).note.token | trim }}
+authtoken: {{ (index (onepassword "NGrok").fields 2).value }}
