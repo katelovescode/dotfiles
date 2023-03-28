@@ -24,12 +24,16 @@ else
 fi
 
 # Fonts for zsh theme
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts
-./install.sh
-cd ..
-rm -rf fonts
-
+if system_profiler SPFontsDataType | grep -q "Powerline"; then
+    echo "powerline fonts already installed"
+else
+    echo not found
+    git clone https://github.com/powerline/fonts.git --depth=1
+    cd fonts
+    ./install.sh
+    cd ..
+    rm -rf fonts
+fi
 # Check for Homebrew and install if we don't have it
 # NB: It seems like Brew installs xcode command line tools
 # so I'm removing that step from the README and let's see
