@@ -45,7 +45,7 @@ brew update
 
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
-brew bundle --file /Users/katedonaldson/.local/share/chezmoi/Brewfile
+brew bundle --file $HOME/.local/share/chezmoi/Brewfile
 
 # Configure Chrome to start where you left off on startup
 cd $HOME/Library/Application\ Support/Google/Chrome/Default

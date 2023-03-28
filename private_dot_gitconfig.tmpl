@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Kate Donaldson
-	email = kate@katelovescode.com
+	email = {{ .email | quote }}
 
 [alias]
   la = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\" --all
