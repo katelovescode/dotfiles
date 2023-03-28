@@ -78,6 +78,7 @@ After going through the checklist above and making sure you backed everything up
         * `~/.local/share/chezmoi/dot_config/private_hub.tml` 
     1. Change the template in the following file to your 1Password entry name and field index for your **NGrok token**
         * `~/.local/share/chezmoi/private_dot_ngrok2/private_ngrok.yml.tmpl`
+1. Edit the ~/.config/chezmoi/chezmoi.toml file `[data]` section to reflect the email on the git account you use for your current computer
 1. Go through the [`.macos`](./.macos) file and adjust the settings to your liking. You can find more settings at [the original script by Mathias Bynens](https://github.com/mathiasbynens/dotfiles/blob/master/.macos) and [Kevin Suttle's macOS Defaults project](https://github.com/kevinSuttle/MacOS-Defaults).
 1. Check out the [`Brewfile`](./Brewfile) file and adjust the apps you want to install for your machine. Use [their search page](https://caskroom.github.io/search) to check if the app you want to install is available.
 1. Commit your changes and push up to your remote.
