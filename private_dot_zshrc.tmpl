@@ -96,6 +96,7 @@ PATH="/usr/local/sbin:$PATH"
 PATH="/opt/homebrew/bin:$PATH" # Add brew to path for M1 Chip
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
+PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 
 export PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 
