@@ -81,11 +81,15 @@ fi
 pg_ctl -D /usr/local/var/postgres start > /dev/null 2>&1
 brew services start postgresql > /dev/null 2>&1
 
-echo "Setting Preferences"
-
-# Set macOS preferences
-cd $HOME
-source $HOME/.macos
+# restart
+echo "\n\nDo you want to set preference?  Anything but 'y' will prevent restarting."
+if read -q "setpref?"; then
+  # Set macOS preferences
+  cd $HOME
+  source $HOME/.macos
+else
+  echo "\n\nSkipping preferences."
+fi
 
 # needed for Docker and other Intel apps on M1 chip
 if [[ $(uname -p) == 'arm' ]]; then
