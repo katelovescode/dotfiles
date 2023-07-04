@@ -8,7 +8,7 @@
         "revision": "c02dfff991181c3ad1721138e2ac8bdce3c6ee5d"
       },
       "homebrew/cask": {
-        "revision": "ebf339dadb1576306fbff134c434f835352320e9"
+        "revision": "17dc999bf60b504cf77b67aa8ef5233b031d3782"
       },
       "homebrew/core": {
         "revision": "9432bb87026504e5992adb68570c408aed3caef6"
@@ -1335,9 +1335,9 @@
         "HOMEBREW_VERSION": "4.0.26",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
-        "CLT": "14.3.1.0.1.1683849156",
+        "CLT": "14.3.0.0.1.1679647830",
         "Xcode": "14.3",
-        "macOS": "13.4.1"
+        "macOS": "13.3.1"
       }
     }
   }
