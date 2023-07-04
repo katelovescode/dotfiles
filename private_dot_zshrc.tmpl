@@ -87,18 +87,25 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # PATH additions #
 ##################
 
-# for earlier versions of Ruby on M1 Macs
-PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
-PATH="$HOME/.pyenv/bin:$PATH"
-PATH="$HOME/.nodenv/bin:$PATH"
-PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-PATH="/usr/local/sbin:$PATH"
-PATH="/opt/homebrew/bin:$PATH" # Add brew to path for M1 Chip
-PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-PATH="$HOME/.rbenv/bin:$PATH"
-PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
+function addToPATH {
+  case ":$PATH:" in
+    *":$1:"*) :;; # already there
+    *) PATH="$1:$PATH";; # or PATH="$PATH:$1"
+  esac
+}
 
-export PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
+# for earlier versions of Ruby on M1 Macs
+addToPATH "/opt/homebrew/opt/openssl@1.1/bin"
+addToPATH "$HOME/.pyenv/bin"
+addToPATH "$HOME/.nodenv/bin"
+addToPATH "$(ruby -r rubygems -e 'puts Gem.user_dir')/bin"
+addToPATH "/usr/local/sbin"
+addToPATH "/opt/homebrew/bin" # Add brew to path for M1 Chip
+addToPATH "/opt/homebrew/opt/libpq/bin"
+addToPATH "$HOME/.rbenv/bin"
+addToPATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+
+export PATH
 
 # for earlier versions of Ruby on M1 Macs
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
