@@ -3,6 +3,9 @@
 	name = Kate Donaldson
 	email = {{ .email | quote }}
 
+[github]
+  user = {{ .githubusername | quote }}
+
 [alias]
   la = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\" --all
 	ac = !git add -A && git commit
