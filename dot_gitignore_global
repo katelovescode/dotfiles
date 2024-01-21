@@ -3,6 +3,11 @@ syntax: glob
 *~
 .DS_Store
 
+# Google Drive syncing temp files #
+###################################
+*.tmp.driveupload*
+*.tmp.drivedownload*
+
 # Compiled source #
 ###################
 *.com
