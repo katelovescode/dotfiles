@@ -55,14 +55,6 @@ Thumbs.db
 ######################
 **/.solargraph.yml
 
-# rbenv / rvm #
-###############
-.ruby-gemset
-
-# nodenv #
-##########
-.node-version
-
 # JS Development #
 ##################
 node_modules
