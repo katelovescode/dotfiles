@@ -1,0 +1,16 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Kate
+	# email = kate@katelovescode.com
+	# signingkey = 7FA8B2DCCB94D515
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+	gpgsign = true
+[core]
+	excludesFile = /Users/kate/.gitignore
+[init]
+	defaultBranch = main
