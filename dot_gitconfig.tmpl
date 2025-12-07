@@ -1,0 +1,46 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Kate
+	# email = kate@katelovescode.com
+	# signingkey = 7FA8B2DCCB94D515
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+	gpgsign = true
+[alias]
+  la = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\" --all
+	ac = !git add -A && git commit
+  cln = "!f() { \
+        if [ ! -z $1 ]; then \
+          git remote prune origin && \
+          if git show-ref refs/heads/$1; then \
+            echo 'checking out' $1 && git checkout $1; \
+            git fetch --all && \
+            git pull && \
+            git branch --merged | grep -vE 'dev$| main$| master$| staging$| testing$ |develop$' | xargs -n 1 git branch -d; \
+            git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D; \
+          else \
+            echo '\n\nBranch does not exist:' $1 '\n\n'; \
+          fi; \
+        else \
+          echo '\n\nUsage: git cln <branch>\n\n'; \
+        fi; \
+       }; f"
+  tidy = "!f() { \
+    if [[ ! -z $1 && $1 != '--dry-run' && $1 != '-d' ]]; then \
+      if [[ $2 == '--dry-run' || $2 == '-d' ]]; then \
+        git checkout $1 && git remote prune origin && git branch --merged | grep -vE '^[ \\*]*(dev|main|master|staging|testing|develop)$' | awk '{print $1}'; \
+      else \
+        git checkout $1 && git remote prune origin && git branch --merged | grep -vE '^[ \\*]*(dev|main|master|staging|testing|develop)$' | awk '{print $1}' | xargs git branch -D; \
+      fi \
+    else \
+      echo '\n\nUsage: git tidy <branch> [--dry-run|-d]\n\n'; \
+    fi; \
+    }; f"
+[core]
+	excludesFile = /Users/kate/.gitignore
+[init]
+	defaultBranch = main
