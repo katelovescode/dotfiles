@@ -278,26 +278,7 @@ else
   echo -e "Homebrew is already installed."
 fi
 
-# # After brew is installed, we need to configure our shell for homebrew
-# echo
-# echo -e ">>>>>>>>>>>>>>>>>>>>>>>>>>"
-# echo "Modifying .zshrc file"
-# CHECK_LINE='eval "$(/opt/homebrew/bin/brew shellenv)"'
-
-# # File to be checked and modified
-# FILE="$HOME/.zshrc"
-
-# # Check if the specific line exists in the file
-# if grep -Fq "$CHECK_LINE" "$FILE"; then
-#   echo "Content already exists in $FILE"
-# else
-#   # Append the content if it does not exist
-#   echo -e '\n# Configure shell for brew\n'"$CHECK_LINE" >>"$FILE"
-#   echo "Content added to $FILE"
-# fi
-
-# # After adding it to the .zprofile file, make sure to run the command
-# source $FILE
+brew bundle install
 
 # accept xcode license
 sudo xcodebuild -license accept
