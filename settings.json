@@ -1,0 +1,48 @@
+{
+  "files.eol": "\n",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "diffEditor.ignoreTrimWhitespace": false
+  },
+  "[dockerfile]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp", // Use the Ruby LSP as the default formatter
+    "editor.semanticHighlighting.enabled": true, // Enable semantic highlighting
+    "editor.formatOnType": true // Enable formatting while typing
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[env]": {
+    "editor.defaultFormatter": "IronGeek.vscode-env"
+  },
+  "files.associations": {
+    ".env": "env",
+    ".env.example": "env"
+  },
+  "editor.renderWhitespace": "all",
+  "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {
+    "[Activate UMBRA protocol]": {
+      "editorBracketMatch.border": "#737373"
+    }
+  },
+  "extensions.ignoreRecommendations": true,
+  "workbench.colorTheme": "Activate UMBRA protocol",
+  "chat.agent.enabled": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false
+}
