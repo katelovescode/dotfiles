@@ -268,9 +268,6 @@ else
     echo "Xcode command line tools already installed"
 fi
 
-# accept xcode license
-sudo xcodebuild -license accept
-
 # install homebrew
 if ! command -v brew &>/dev/null; then
   echo
@@ -289,23 +286,8 @@ else
   echo -e "Homebrew is already installed."
 fi
 
-brew bundle install
-
 chezmoi init &> /dev/null
 
-###############################################################################
-# Kill affected applications                                                  #
-###############################################################################
+echo "Done. Some of these changes require a logout/restart to take effect. Restarting..."
 
-for app in "Activity Monitor" \
-	"cfprefsd" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome" \
-	"Messages" \
-	"Photos" \
-	"SystemUIServer" \
-	"Terminal"; \
-	do killall "${app}" &> /dev/null;
-done
-echo "Done. Some of these changes require a logout/restart to take effect.  Manually restart when finished."
+sudo shutdown -r now
