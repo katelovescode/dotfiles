@@ -17,10 +17,14 @@ git clone <url-to-this-repo> ~/.local/share/chezmoi
 cd  ~/.local/share/chezmoi
 sh setup.sh
 ```
-Your system will reboot.  When it's back up, open iTerm and run:
-```
-chezmoi apply
-```
+Your system will reboot.  When it's back up, 
+- edit `~/.config/chezmoi/chezmoi.toml` and add your data fields for email, signing key and environment
+    - NB: to install personal applications, use `personal` as your environment, any other environment will skip them, but the key must be present in the data block of the config
+
+- open iTerm and run:
+    ```
+    chezmoi apply
+    ```
 
 ## Inspiration
 

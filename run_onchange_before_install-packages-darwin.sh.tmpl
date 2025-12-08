@@ -1,7 +1,11 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-# Brewfile hash: {{ include "Brewfile.tmpl" | sha256sum }}
-brew bundle cleanup
-brew bundle install --file={{ .chezmoi.sourceDir }}/Brewfile.tmpl
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+brew bundle cleanup --force
+brew bundle install --file={{ .chezmoi.sourceDir }}/Brewfile
+{{- if eq .environment "personal" -}}
+# Brewfile hash: {{ include "Brewfile.personal" | sha256sum }}
+brew bundle install --file={{ .chezmoi.sourceDir }}/Brewfile.personal
+{{ end -}}
 {{ end -}}
