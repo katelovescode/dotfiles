@@ -55,7 +55,9 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "America/Chicago" > /dev/null
+# Error -99 is a known bug in Mac
+echo "Error -99 in the following command is a known error and does not impact timezone being set"
+sudo systemsetup -settimezone "America/Chicago"
 
 # Stop iTunes from responding to the keyboard media keys
 #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
@@ -73,20 +75,29 @@ sudo pmset -a autorestart 1
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
-# Sleep the display after 15 minutes
-sudo pmset -a displaysleep 15
+# Sleep the display after 5 minutes on battery
+sudo pmset -c displaysleep 5
 
-# Disable machine sleep while charging
-sudo pmset -c sleep 0
+# Sleep the display after 15 minutes on battery
+sudo pmset -b displaysleep 15
 
-# Set machine sleep to 5 minutes on battery
-sudo pmset -b sleep 5
+# Sleep the disk after 5 minutes on battery
+sudo pmset -c disksleep 10
+
+# Sleep the disk after 15 minutes on battery
+sudo pmset -b disksleep 20
+
+# Sleep the machine after 5 minutes on battery
+sudo pmset -c sleep 10
+
+# Sleep the machine after 15 minutes on battery
+sudo pmset -b sleep 20
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+sudo systemsetup -setcomputersleep 20 > /dev/null
 
 # Hibernation mode
 # 0: Disable hibernation (speeds up entering sleep mode)
@@ -260,6 +271,9 @@ else
     echo "Xcode command line tools already installed"
 fi
 
+# accept xcode license
+sudo xcodebuild -license accept
+
 # install homebrew
 if ! command -v brew &>/dev/null; then
   echo
@@ -280,8 +294,7 @@ fi
 
 brew bundle install
 
-# accept xcode license
-sudo xcodebuild -license accept
+chezmoi init &> /dev/null
 
 ###############################################################################
 # Kill affected applications                                                  #
@@ -295,7 +308,7 @@ for app in "Activity Monitor" \
 	"Messages" \
 	"Photos" \
 	"SystemUIServer" \
-	"Terminal" \
-	killall "${app}" &> /dev/null
+	"Terminal"; \
+	do killall "${app}" &> /dev/null;
 done
 echo "Done. Some of these changes require a logout/restart to take effect.  Manually restart when finished."
