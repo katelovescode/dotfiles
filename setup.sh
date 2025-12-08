@@ -286,6 +286,9 @@ else
   echo -e "Homebrew is already installed."
 fi
 
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 chezmoi init &> /dev/null
 
 echo "Done. Some of these changes require a logout/restart to take effect. Restarting..."
