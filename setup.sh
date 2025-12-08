@@ -96,7 +96,7 @@ sudo pmset -b sleep 20
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
 
-# Never go into computer sleep mode
+# Computer sleep at 20 minutes
 sudo systemsetup -setcomputersleep 20 > /dev/null
 
 # Hibernation mode
