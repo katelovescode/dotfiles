@@ -1,3 +1,15 @@
+{{ $environment := promptStringOnce . "environment" "What environment are you configuring?" "personal" }}
+{{ $name := promptStringOnce . "name" "What name do you want to use for git commits?" "Kate" }}
+{{ $email := promptStringOnce . "email" "What email do you want to use for git commits?" "kate@katelovescode.com" }}
+{{- $signingkey_choices := list "7FA8B2DCCB94D515" "Other" -}}
+{{- $signingkey := promptChoiceOnce
+    . "signingkey"
+    "What signing key do you want to use for git commits?"
+    $signingkey_choices
+    ""
+-}}
+
+
 progress = true
 verbose = true
 [add]
@@ -11,7 +23,7 @@ verbose = true
     autoAdd = true
     autoCommit = true
 [data]
-    email = ""
-    signingkey = ""
-    environment = ""
-    name = ""
+    email = {{- $email | quote -}}
+    signingkey = {{- $signingkey | quote -}}
+    environment = {{- $environment | quote -}}
+    name = {{- $name | quote -}}
