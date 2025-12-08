@@ -17,6 +17,10 @@ git clone <url-to-this-repo> ~/.local/share/chezmoi
 cd  ~/.local/share/chezmoi
 sh setup.sh
 ```
+Your system will reboot.  When it's back up, open iTerm and run:
+```
+chezmoi apply
+```
 
 ## Inspiration
 
